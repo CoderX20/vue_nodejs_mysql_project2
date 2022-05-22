@@ -23,7 +23,7 @@ register_router.post('/registerCheck',function(request,response){
             throw err
         }
         else{
-            if(result.length!=0){
+            if(result.length!==0){
                 response.send({result:'exit'})
             }
             else{

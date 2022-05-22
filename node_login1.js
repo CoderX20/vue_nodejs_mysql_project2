@@ -19,7 +19,7 @@ login_router.post('/loginCheck',function(request,response){
     console.log(request.method+'>'+request.url+":"+time.get_time_now())
     var url_query=request.query
     var check_db=mysql.createConnection(database_config)
-    var query_sql_str='select * from students where name=? and password=?'
+    var query_sql_str='select * from users where username=? and password=?'
     check_db.connect()
     check_db.query(query_sql_str,[url_query.account,url_query.password],function(err,res_data){
         if(err){
@@ -29,7 +29,7 @@ login_router.post('/loginCheck',function(request,response){
         }
         else{
             // console.log(res_data)
-            if(res_data.length==0){
+            if(res_data.length===0){
                 response.send({result:'false'})
             }
             else{
